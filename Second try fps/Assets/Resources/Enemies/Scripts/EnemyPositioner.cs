@@ -68,7 +68,7 @@ public class EnemyPositioner : MonoBehaviour
                 positionIndex = (positionIndex + 1) % _spawnPositions.Count;
 
                 Vector3 position = _spawnPositions[positionIndex].position +
-                    new Vector3(UnityEngine.Random.Range(-2, 2), 0, UnityEngine.Random.Range(-2, 2));
+                    new Vector3(UnityEngine.Random.Range(-3, 3), 0, UnityEngine.Random.Range(-3, 3));
 
                 var instance = ObjectPooler.ProvideObject(enemy, position,
                     enemy.transform.rotation, ObjectPooler.PoolType.GameObject);

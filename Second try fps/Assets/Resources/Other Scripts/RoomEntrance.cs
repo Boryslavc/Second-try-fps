@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider))]
 public class RoomEntrance : MonoBehaviour
 {
-    public Image stateImgae;
+    //public Image stateImgae;
 
     public event UnityAction OnPlayerEntered;
     public event UnityAction OnPlayerExited;
@@ -18,7 +18,7 @@ public class RoomEntrance : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            stateImgae.color = Color.green;
+            //stateImgae.color = Color.green;
             OnPlayerEntered?.Invoke();
             PlayerEntered = true;
             PlayerExited = false;
@@ -29,7 +29,7 @@ public class RoomEntrance : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            stateImgae.color = Color.red;
+            //stateImgae.color = Color.red;
             OnPlayerExited?.Invoke();
             PlayerExited = true;
             PlayerEntered = false;
