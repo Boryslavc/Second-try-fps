@@ -8,9 +8,6 @@ public class ShootingHandler : MonoBehaviour
     [SerializeField] private List<Gun> _gunsPrefabs;
     [SerializeField] private Transform _gunOffset; //positional offset of a gun
 
-    [Header("References")] 
-    [SerializeField] private PlayerAnimationHandler _playerAnimation;
-
     private InputHandler inputHandler;
     private Camera camera;
 

@@ -199,7 +199,6 @@ MonoBehaviour:
   - {fileID: 519215244643475098, guid: 9a9ebf112639fa54d9b671f2d948387e, type: 3}
   - {fileID: 7211092022552281190, guid: 486f2e15f51f3664ea6810ad700f899d, type: 3}
   _gunOffset: {fileID: 7709005423506043269}
-  _playerAnimation: {fileID: 0}
 --- !u!114 &888799341792871826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,9 +212,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerCamera: {fileID: 8109437478959683564}
-  _recoilSpeed: 10
-  _recoilAmount: {x: 0.1, y: 0.1, z: 0.1}
-  _recoilReturnSpeed: 2
+  _animationTarget: {fileID: 3534794242511204121}
+  step: 0.1
+  maxStepDistance: 0.06
+  rotationStep: 4
+  maxRotationStep: 5
+  smooth: 10
+  smoothRot: 12
 --- !u!1 &7263549532215373249
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 7263549532215373249}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.88, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -446,7 +449,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5ddbd8bd67f7f4441b36e6e02f68d8b9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: -1.51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ddbd8bd67f7f4441b36e6e02f68d8b9,
         type: 3}
