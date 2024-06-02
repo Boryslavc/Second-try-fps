@@ -430,6 +430,7 @@
 "Assets/Resources/Other Scripts/Vector3Extensions.cs"
 "Assets/Resources/Player/Scripts/CameraController.cs"
 "Assets/Resources/Player/Scripts/InputHandler.cs"
+"Assets/Resources/Player/Scripts/PlayerAnimationHandler.cs"
 "Assets/Resources/Player/Scripts/PlayerHealth.cs"
 "Assets/Resources/Player/Scripts/PlayerMovement.cs"
 "Assets/Resources/Player/Scripts/ShootingHandler.cs"
