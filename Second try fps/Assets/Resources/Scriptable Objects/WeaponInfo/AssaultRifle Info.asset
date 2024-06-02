@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRifle Info
   m_EditorClassIdentifier: 
   Damage: 25
-  Distance: 200
+  Distance: 300
   TimeBetweenShots: 0.9
   IsSpreadApplied: 1
   SpreadType: 1

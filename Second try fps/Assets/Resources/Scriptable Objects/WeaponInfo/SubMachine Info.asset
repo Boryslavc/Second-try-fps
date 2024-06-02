@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SubMachine Info
   m_EditorClassIdentifier: 
   Damage: 15
-  Distance: 200
+  Distance: 300
   TimeBetweenShots: 0.1
   IsSpreadApplied: 1
   SpreadType: 1

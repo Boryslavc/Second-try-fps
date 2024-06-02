@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RPG Info
   m_EditorClassIdentifier: 
   Damage: 120
-  Distance: 200
+  Distance: 300
   TimeBetweenShots: 1
   IsSpreadApplied: 0
   SpreadType: 0
