@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2678ca1a640174d8a4ffac6ceb64b6, type: 3}
+  m_Name: Rifles Effects
+  m_EditorClassIdentifier: 
+  _shotEffectPrefab: {fileID: 2178945506081534532, guid: 4e6496366ba01ba4d94bdcbbcad9bd6a,
+    type: 3}
+  _imapctEffectPrefab: {fileID: 5277102680453572866, guid: cfd34fb071b972c4db86dce27043093c,
+    type: 3}
+  _trailPrefab: {fileID: 631864011887451195, guid: 8363570bc96424b42964946bdf512dc6,
+    type: 3}
