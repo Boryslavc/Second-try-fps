@@ -18,8 +18,8 @@ MonoBehaviour:
   IsSpreadApplied: 1
   SpreadType: 1
   Spread: {x: 0.01, y: 0.01, z: 0.01}
-  RecoilSpeed: 10
-  RecoilAmount: {x: -2, y: 0.1, z: 0.1}
-  RecoilRecoverySpeed: 0.5
+  RecoilSpeed: 30
+  RecoilAmount: {x: -10, y: 0.1, z: 0.1}
+  RecoilRecoverySpeed: 5
   MaxSpreadTime: 2
   MagazineSize: 30

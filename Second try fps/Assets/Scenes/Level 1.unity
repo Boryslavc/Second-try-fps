@@ -2930,6 +2930,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 888799341792871826, guid: b4d8632c071516645a09d19dce51787f,
+        type: 3}
+      propertyPath: rotationStep
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 888799341792871826, guid: b4d8632c071516645a09d19dce51787f,
+        type: 3}
+      propertyPath: maxRotationStep
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5331342542888068314, guid: b4d8632c071516645a09d19dce51787f,
         type: 3}
       propertyPath: m_Name

@@ -190,6 +190,9 @@ MonoBehaviour:
     m_Bits: 292
   _burstDelay: 0.2
   _burstSize: 3
+  _recoilSpeed: 30
+  _recoilAmount: {x: -2, y: 0.1, z: 0.1}
+  _recoilReturnSpeed: 2
 --- !u!1 &4067306048573731071
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 4067306048573731071}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.129, z: 0.641}
+  m_LocalPosition: {x: 0, y: 0.0295, z: 0.5076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
