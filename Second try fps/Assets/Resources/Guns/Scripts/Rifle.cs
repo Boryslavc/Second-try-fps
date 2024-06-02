@@ -15,7 +15,13 @@ public class Rifle : Gun
     [SerializeField] private float _burstDelay;
     [SerializeField] private float _burstSize;
 
-    
+    [Header("Recoil")]
+    [SerializeField] private float _recoilSpeed = 30f;
+    [SerializeField] private Vector3 _recoilAmount = new Vector3(-2f, .1f, .1f);
+    [SerializeField] private float _recoilReturnSpeed = 2f;
+
+
+
     private bool isOnEnemy;
     private Vector3 extraSpread = new Vector3(0.03f, 0.02f, 0f);
     
@@ -136,6 +142,7 @@ public class Rifle : Gun
             updateAmmoInterface(ammo);
 
             PlayShotEffect();
+            PlayerAnimationHandler.OnShootRecoil?.Invoke(_weaponInfo.RecoilSpeed, _weaponInfo.RecoilAmount, _weaponInfo.RecoilRecoverySpeed);
 
             _soundSO.PlayShotSound(transform.position);
 

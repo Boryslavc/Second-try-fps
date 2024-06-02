@@ -9,6 +9,8 @@ public class WeaponConfig : ScriptableObject
     public bool IsSpreadApplied;
     public SpreadTypeEnum SpreadType;
     public Vector3 Spread;
+    public float RecoilSpeed;
+    public Vector3 RecoilAmount;
     public float RecoilRecoverySpeed;
     public float MaxSpreadTime;
     public int MagazineSize;
