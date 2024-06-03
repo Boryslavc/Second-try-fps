@@ -142,7 +142,6 @@ public class Rifle : Gun
             updateAmmoInterface(ammo);
 
             PlayShotEffect();
-            PlayerAnimationHandler.OnShootRecoil?.Invoke(_weaponInfo.RecoilSpeed, _weaponInfo.RecoilAmount, _weaponInfo.RecoilRecoverySpeed);
 
             _soundSO.PlayShotSound(transform.position);
 
@@ -151,6 +150,10 @@ public class Rifle : Gun
             {
                 spread.x += UnityEngine.Random.Range(-extraSpread.x, extraSpread.x);
                 spread.y += UnityEngine.Random.Range(-extraSpread.y, extraSpread.y);
+            }
+            else
+            {
+                PlayerAnimationHandler.OnShootRecoil?.Invoke(_weaponInfo.RecoilSpeed, _weaponInfo.RecoilAmount, _weaponInfo.RecoilRecoverySpeed);
             }
 
             Vector3 direction = _bulletSpawnPoint.forward;
