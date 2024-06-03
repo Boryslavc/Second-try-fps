@@ -4,6 +4,16 @@ using UnityEngine;
 public class CoverArea : MonoBehaviour
 {
     [SerializeField] private List<Transform> coverPositions;
+    public List<CoverArea> incidentAreas;
+
+    public Dictionary<CoverArea, float> sqrDistToArea = new Dictionary<CoverArea, float>();
+
+    public float sqrDistToGoal;
+    public float sqrDistFromStart;
+
+    public CoverArea cameFrom;
+
+    public bool IsPlayerNearby { get; private set; }
 
     public override string ToString()
     {
@@ -15,9 +25,32 @@ public class CoverArea : MonoBehaviour
     private void Awake()
     {
         coversAvailable = coverPositions.Count;
+
+        foreach(CoverArea coverArea in incidentAreas)
+        {
+            float distance = Vector3.SqrMagnitude(this.transform.position
+                - coverArea.transform.position);
+            sqrDistToArea.Add(coverArea, distance);
+        }
     }
 
     public bool HasCoverAvailable() => coversAvailable > 0;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            IsPlayerNearby = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            IsPlayerNearby = false;
+        }
+    }
 
     public Transform ProvideRandomCover()
     {

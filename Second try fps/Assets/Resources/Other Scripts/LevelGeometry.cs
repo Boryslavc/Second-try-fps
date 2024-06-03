@@ -51,4 +51,16 @@ public class LevelGeometry : MonoBehaviour
         }
         return closetsArea;
     }
+
+    public List<CoverArea> GetCoverAreasAroundPlayer()
+    {
+        List<CoverArea> closets = new List<CoverArea>();
+
+        foreach(var area in coverAreas)
+        {
+            if(area.IsPlayerNearby)
+                closets.Add(area);
+        }
+        return closets;
+    }
 }

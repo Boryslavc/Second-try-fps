@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -7,50 +8,49 @@ public class RunToCoverState : IState
     private BlueEnemy blue;
     private Transform player;
 
-    private Transform cover;
-    private Vector3 position;
+    private CoverArea current;
+
 
     private Image stateImage;
 
-    public RunToCoverState(BlueEnemy blue, Transform cover, Image image)
+    public RunToCoverState(BlueEnemy blue, Image image)
     {
         this.blue = blue;
-        this.cover = cover;
         player = GameObject.FindAnyObjectByType<PlayerMovement>().transform;
 
         stateImage = image;
     }
 
 
-    public bool HasArrived
+    public bool CloseEnoughToPlayer
     {
         get
         {
-            return blue.transform.position.HorizontalSquaredDistanceTo(position) < 2f;
+            if (current == null)
+                current = LevelGeometry.Instance.GetCoverAreasAroundPlayer()[0];
+            return current.IsPlayerNearby && 
+                Vector3.Distance(blue.transform.position, current.transform.position) < 5f;
         }
     }
 
     public void OnEnter()
     {
-        ComputePosition();
+        var areas = LevelGeometry.Instance.GetCoverAreasAroundPlayer();
+        ComputePosition(areas);
 
         blue.SpeedUpBy(2f);
-        blue.GoTo(position);
 
         stateImage.color = Color.green;
     }
-    private void ComputePosition()
+    private void ComputePosition(List<CoverArea> areas)
     {
-        var dirToPlayer = (player.position - blue.transform.position).normalized;
-        if (Vector3.Dot(blue.transform.forward, dirToPlayer) > 0)
-        {
-            position = cover.position - cover.forward * 2f;
-        }
-        else
-        {
-            position = cover.position + cover.forward * 2f;
-        }
-        Debug.DrawRay(position, Vector3.up * 5f, Color.black, 2f);
+        // possible filters to sort out the areas
+        int randNumb = Random.Range(0, areas.Count);
+                
+        Vector3 pos = areas[randNumb].transform.position;
+
+        if(NavMesh.SamplePosition(pos, out NavMeshHit hit, 3f, blue.GetAgentComp().areaMask))
+            blue.GoTo(hit.position);
     }
 
     public void Tick()

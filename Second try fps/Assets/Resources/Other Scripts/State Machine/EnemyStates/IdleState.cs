@@ -18,11 +18,6 @@ public class IdleState : IState
     public void OnEnter()
     {
        stateImage.color = Color.gray;
-
-        if(enemy.transform.position != stayPosition)
-        {
-            enemy.GoTo(stayPosition);
-        }
     }
 
     public void OnExit()

@@ -13,6 +13,8 @@ public class RoomEntrance : MonoBehaviour
     public bool PlayerEntered { get; private set; } = false;
     public bool PlayerExited { get; private set; } = false;
 
+    // just for the visibility in da Inspector
+    public bool PLayerInDaRoom;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +23,7 @@ public class RoomEntrance : MonoBehaviour
             //stateImgae.color = Color.green;
             OnPlayerEntered?.Invoke();
             PlayerEntered = true;
+            PLayerInDaRoom = true;
             PlayerExited = false;
         }
     }
@@ -32,6 +35,7 @@ public class RoomEntrance : MonoBehaviour
             //stateImgae.color = Color.red;
             OnPlayerExited?.Invoke();
             PlayerExited = true;
+            PLayerInDaRoom = false;
             PlayerEntered = false;
         }
     }
