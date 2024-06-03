@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 5439627227214306905}
   - component: {fileID: 3081951449923533623}
   - component: {fileID: 888799341792871826}
+  - component: {fileID: 3297165034652863139}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -150,6 +151,7 @@ MonoBehaviour:
   _shootActionName: Shoot
   _aimActionName: Aim
   _changeWeaponName: ChangeWeapon
+  _changeModeName: ChangeMode
 --- !u!114 &1100338520882252045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +170,7 @@ MonoBehaviour:
   _gravity: 9.8
   _mouseSensetivity: 2
   _upAndDownRange: 80
+  camera: {fileID: 0}
 --- !u!114 &5439627227214306905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +222,21 @@ MonoBehaviour:
   maxRotationStep: 5
   smooth: 10
   smoothRot: 12
+--- !u!114 &3297165034652863139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331342542888068314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2685c23afa18244afbe19fba433d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spiritPrefab: {fileID: 6989142353486096832, guid: 326b3bf5f996e5242aa7473f9af4b5cc,
+    type: 3}
+  playerCamera: {fileID: 1451075060640489838}
 --- !u!1 &7263549532215373249
 GameObject:
   m_ObjectHideFlags: 0

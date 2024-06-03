@@ -66,7 +66,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     private void Sway()
     {
         Vector3 invertLook = _inputHandler.LookInput * -step;
-        Debug.Log(invertLook);
+        //Debug.Log(invertLook);
         invertLook.x = Mathf.Clamp(invertLook.x, -maxStepDistance, maxStepDistance);
         invertLook.y = Mathf.Clamp(invertLook.y, -maxStepDistance, maxStepDistance);
 

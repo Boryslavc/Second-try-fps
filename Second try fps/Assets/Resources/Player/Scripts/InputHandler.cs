@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
@@ -20,6 +21,10 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private string _aimActionName = "Aim";
     [SerializeField] private string _changeWeaponName = "ChangeWeapon";
 
+    [Header("Special Action Names")]
+    [SerializeField] private string _changeModeName = "ChangeMode";
+    [SerializeField] private string _spiritFlyName = "SpiritFly";
+
 
     private InputAction moveAction;
     private InputAction lookAction;
@@ -28,6 +33,8 @@ public class InputHandler : MonoBehaviour
 
     private InputAction shootAction;
     private InputAction aimAction;
+    private InputAction changeModeAction;
+    private InputAction spiritFlyAction;
     private InputAction changeWeapon;
 
 
@@ -37,8 +44,9 @@ public class InputHandler : MonoBehaviour
     public bool SprintBool { get; private set; }
     public bool ShootBool { get;private set; }
     public bool AimBool { get; private set; }
+    public float SpiritFlyFloat { get; private set; }
     public int ChangeWeaponInt { get; private set; }
-
+    public UnityAction onModeChanged { get; set; }
 
     private void Awake()
     {
@@ -58,6 +66,8 @@ public class InputHandler : MonoBehaviour
 
         shootAction = inputMap.FindAction(_shootActionName);
         aimAction = inputMap.FindAction(_aimActionName);
+        changeModeAction = inputMap.FindAction(_changeModeName);
+        spiritFlyAction = inputMap.FindAction(_spiritFlyName);
         changeWeapon = inputMap.FindAction(_changeWeaponName);
     }
 
@@ -82,6 +92,11 @@ public class InputHandler : MonoBehaviour
         aimAction.performed += context => AimBool = true;
         aimAction.canceled += context => AimBool = false;
 
+        changeModeAction.performed += context => onModeChanged?.Invoke();
+
+        spiritFlyAction.performed += context => SpiritFlyFloat = context.ReadValue<float>();
+        spiritFlyAction.canceled += context => SpiritFlyFloat = 0;
+
         changeWeapon.performed += context => 
                         ChangeWeaponInt = Mathf.Clamp((int)context.ReadValue<float>(),-1,1);
         changeWeapon.canceled += context => ChangeWeaponInt = 0;
@@ -96,6 +111,8 @@ public class InputHandler : MonoBehaviour
 
         shootAction.Enable();
         aimAction.Enable();
+        changeModeAction.Enable();
+        spiritFlyAction.Enable();
         changeWeapon.Enable();
     }
 
@@ -109,6 +126,8 @@ public class InputHandler : MonoBehaviour
 
         shootAction.Disable();
         aimAction.Disable();
+        changeModeAction.Disable();
+        spiritFlyAction.Disable();
         changeWeapon.Disable();
     }
 }

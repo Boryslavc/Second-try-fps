@@ -15,9 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _mouseSensetivity = 2f;
     [SerializeField] private float _upAndDownRange = 80f;
 
+    [SerializeField] private Camera camera;
 
     private CharacterController characterController;
-    private Camera camera;
     private InputHandler inputHandler;
 
     private Vector3 currentMoveDirection;
