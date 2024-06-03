@@ -25,6 +25,8 @@ public class ShootingHandler : MonoBehaviour
         inputHandler = GetComponent<InputHandler>();
         camera = GetComponentInChildren<Camera>();
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         InstantiateGuns();
     }
 
