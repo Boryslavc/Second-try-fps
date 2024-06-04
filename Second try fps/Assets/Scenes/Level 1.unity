@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 60982440}
   - component: {fileID: 60982439}
   - component: {fileID: 60982441}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10.7
+  m_Radius: 20.4
   m_Center: {x: 3.84, y: 0, z: 0.16}
 --- !u!1 &73849620
 GameObject:
@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 193623890}
   - component: {fileID: 193623891}
   - component: {fileID: 193623892}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1316,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 12.82
+  m_Radius: 17.65
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &209977617
 GameObject:
@@ -11931,7 +11931,7 @@ GameObject:
   - component: {fileID: 752521702}
   - component: {fileID: 752521701}
   - component: {fileID: 752521703}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11999,7 +11999,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10.8
+  m_Radius: 20.2
   m_Center: {x: 2.06, y: 0, z: 0}
 --- !u!1 &754644547
 GameObject:
@@ -12288,7 +12288,7 @@ GameObject:
   - component: {fileID: 807705348}
   - component: {fileID: 807705347}
   - component: {fileID: 807705349}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12510,7 +12510,7 @@ GameObject:
   - component: {fileID: 828217287}
   - component: {fileID: 828217286}
   - component: {fileID: 828217288}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12579,7 +12579,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 17.96
+  m_Radius: 26.4
   m_Center: {x: 11.47, y: 0, z: 2.36}
 --- !u!1 &844238961
 GameObject:
@@ -14037,7 +14037,7 @@ GameObject:
   - component: {fileID: 922016281}
   - component: {fileID: 922016280}
   - component: {fileID: 922016282}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14105,7 +14105,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 23.88, y: 7.85, z: 12.03}
+  m_Size: {x: 55.14, y: 7.85, z: 29.4}
   m_Center: {x: 1.4, y: 4.03, z: 2.14}
 --- !u!1 &954559120
 GameObject:
@@ -16549,7 +16549,7 @@ GameObject:
   - component: {fileID: 1297365921}
   - component: {fileID: 1297365920}
   - component: {fileID: 1297365922}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17048,7 +17048,7 @@ GameObject:
   - component: {fileID: 1330375920}
   - component: {fileID: 1330375923}
   - component: {fileID: 1330375922}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25162,7 +25162,7 @@ GameObject:
   - component: {fileID: 1728784524}
   - component: {fileID: 1728784523}
   - component: {fileID: 1728784525}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25231,7 +25231,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 11.17
+  m_Radius: 17.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1740372347
 GameObject:
@@ -26641,7 +26641,7 @@ GameObject:
   - component: {fileID: 1855699233}
   - component: {fileID: 1855699232}
   - component: {fileID: 1855699234}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26709,7 +26709,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 11.51
+  m_Radius: 17.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1859000363
 GameObject:
@@ -27629,7 +27629,7 @@ GameObject:
   - component: {fileID: 1985218695}
   - component: {fileID: 1985218698}
   - component: {fileID: 1985218697}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27938,7 +27938,7 @@ GameObject:
   - component: {fileID: 2019869891}
   - component: {fileID: 2019869890}
   - component: {fileID: 2019869892}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: CoverArea 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28006,7 +28006,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 11.06
+  m_Radius: 18.52
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2025025808
 GameObject:

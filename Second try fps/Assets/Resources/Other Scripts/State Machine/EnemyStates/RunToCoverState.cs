@@ -6,31 +6,49 @@ using UnityEngine.UI;
 public class RunToCoverState : IState
 {
     private BlueEnemy blue;
-    private Transform player;
 
-    private CoverArea current;
+    private CoverArea currentArea;
+    private Vector3 coverPosition;
 
+    private LayerMask mask = LayerMask.GetMask("CoverArea");
 
     private Image stateImage;
 
     public RunToCoverState(BlueEnemy blue, Image image)
     {
         this.blue = blue;
-        player = GameObject.FindAnyObjectByType<PlayerMovement>().transform;
 
         stateImage = image;
     }
 
 
-    public bool CloseEnoughToPlayer
+    public bool Arrived
     {
         get
         {
-            if (current == null)
-                current = LevelGeometry.Instance.GetCoverAreasAroundPlayer()[0];
-            return current.IsPlayerNearby && 
-                Vector3.Distance(blue.transform.position, current.transform.position) < 5f;
+            if (currentArea == null)
+                FindArea();
+            return Vector3.Distance(blue.GetAgentComp().destination, blue.transform.position) < 5f
+                && currentArea.IsPlayerNearby == true;
         }
+    }
+    // does more than one thing REFACTOR
+    private void FindArea()
+    {
+        Collider[] col = Physics.OverlapSphere(blue.transform.position, 3f, mask);
+
+        foreach(var c in col)
+        {
+            if(c.TryGetComponent(out CoverArea area))
+            {
+                currentArea = area;
+                break;
+            }
+        }
+
+        if (NavMesh.SamplePosition(currentArea.transform.position,
+            out NavMeshHit hit, 5f, blue.GetAgentComp().areaMask))
+            blue.GoTo(hit.position);
     }
 
     public void OnEnter()
@@ -44,13 +62,16 @@ public class RunToCoverState : IState
     }
     private void ComputePosition(List<CoverArea> areas)
     {
-        // possible filters to sort out the areas
-        int randNumb = Random.Range(0, areas.Count);
-                
-        Vector3 pos = areas[randNumb].transform.position;
+        if(areas.Count > 0)
+        {
+            // possible filters to sort out the areas
+            int randNumb = Random.Range(0, areas.Count);
 
-        if(NavMesh.SamplePosition(pos, out NavMeshHit hit, 3f, blue.GetAgentComp().areaMask))
-            blue.GoTo(hit.position);
+            coverPosition = areas[randNumb].transform.position;
+            currentArea = areas[randNumb];
+
+            blue.GoTo(coverPosition);
+        }
     }
 
     public void Tick()

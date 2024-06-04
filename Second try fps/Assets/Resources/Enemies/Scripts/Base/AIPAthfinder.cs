@@ -4,14 +4,14 @@ using UnityEngine;
 public class AIPAthfinder
 {
     private Enemy enemy;
-    private float nearestCoverSearchRadius;
+    private float nearestCoverSearchRadius = 4f;
 
     private LayerMask layerMask;
 
     public AIPAthfinder(Enemy enemy)
     {
         this.enemy = enemy;
-        layerMask = LayerMask.GetMask("Hideable");
+        layerMask = LayerMask.GetMask("CoverArea");
     }
 
     public List<Transform> FindPathTo(Vector3 target)
@@ -69,7 +69,7 @@ public class AIPAthfinder
         foreach(CoverArea coverArea in startArea.incidentAreas)
         {
             coverArea.sqrDistToGoal = Vector3.SqrMagnitude(coverArea.transform.position
-                - endPoint.transform.position);
+                - endArea.transform.position);
             coverArea.sqrDistFromStart = Vector3.SqrMagnitude(coverArea.transform.position
                 - startPoint.position);
 
@@ -96,8 +96,9 @@ public class AIPAthfinder
                         float fromStart = Vector3.SqrMagnitude(coverArea.transform.position
                             - endArea.transform.position);
 
-                        if(toGoal + fromStart < coverArea.sqrDistFromStart + coverArea.sqrDistToGoal
-                            && coverArea.cameFrom != null)
+                        if(coverArea.sqrDistFromStart == 0  && coverArea.sqrDistToGoal == 0 ||
+                            (toGoal + fromStart < coverArea.sqrDistFromStart + coverArea.sqrDistToGoal
+                            && coverArea.cameFrom != null))
                         {
                             coverArea.sqrDistFromStart = fromStart;
                             coverArea.sqrDistToGoal = toGoal;
@@ -112,11 +113,10 @@ public class AIPAthfinder
         }
 
         CoverArea area = endArea;
-
-        while(area.cameFrom != null)
+        
+        while(area != null)
         {
             path.Add(area.transform);
-
             area = area.cameFrom;
         }
         path.Reverse();
