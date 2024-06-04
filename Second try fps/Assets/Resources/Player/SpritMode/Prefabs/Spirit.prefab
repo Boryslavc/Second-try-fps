@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8238195878324827324}
   - component: {fileID: 8268232551541496743}
+  - component: {fileID: 5202957555305267711}
   m_Layer: 0
   m_Name: Spirit
   m_TagString: Untagged
@@ -174,9 +175,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
+  _speedMultiplyer: 2
   _mouseSensetivity: 2
   _upAndDownRange: 80
   camera: {fileID: 623713765021880778}
+--- !u!114 &5202957555305267711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989142353486096832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5421479acfa483d4cbba7dd93422fae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movableStructureLayer:
+    serializedVersion: 2
+    m_Bits: 65536
+  reachingDistance: 1000
 --- !u!1 &8017491438434300438
 GameObject:
   m_ObjectHideFlags: 0

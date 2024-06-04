@@ -54,4 +54,9 @@ public class SpiritMovementHandler : MonoBehaviour
     {
         return camera;
     }
+
+    public InputHandler GetInputHandler()
+    {
+        return inputHandler;
+    }
 }
