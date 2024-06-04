@@ -18,6 +18,7 @@ public class BlueEnemy : Enemy, IShootable
     
     private Detector detector;
     private StateMachine stateMachine;
+    private AIPAthfinder pathfinder;
 
     private Vector3 idlePosition;
 
@@ -36,6 +37,7 @@ public class BlueEnemy : Enemy, IShootable
         agent = GetComponent<NavMeshAgent>();
         detector = GetComponent<Detector>();
         health = GetComponent<EnemyHealth>();
+        pathfinder = new AIPAthfinder(this);
 
         gun.SetRayCastOrigin(transform.Find("Eye Level"));
 
@@ -46,16 +48,13 @@ public class BlueEnemy : Enemy, IShootable
 
     private void InitializeStateMachine()
     {
-        var idle = new IdleState(this, idlePosition, stateImage);
+        var runToCover = new RunToCoverState(this, stateImage);
         var combat = new BlueCombat(this, stateImage);
-        var chase = new ChasePlayer(agent, stateImage);
 
         stateMachine = new StateMachine();
 
-        stateMachine.AddAnyTransition(combat, () => detector.IsPlayerInRoom);
-        stateMachine.AddAnyTransition(idle, () => 
-                !detector.IsPlayerInRoom && !detector.HasPlayerRanAway);
-        stateMachine.AddTransition(combat, chase, () => detector.HasPlayerRanAway);
+        stateMachine.AddAnyTransition(runToCover, () => !runToCover.Arrived);
+        stateMachine.AddTransition(runToCover, combat, () => runToCover.Arrived);
     }
 
     public bool IsOutOfAmmo()
@@ -69,9 +68,12 @@ public class BlueEnemy : Enemy, IShootable
 
     public override void GoTo(Vector3 position)
     {
-        agent.SetDestination(position);
+        if(NavMesh.SamplePosition(position, out NavMeshHit hit, 2f, agent.areaMask))
+        {
+            agent.SetDestination(hit.position);
+            Debug.DrawRay(hit.position, Vector3.up * 10f, Color.blue, 20f);
+        }
         //List<Transform> points = pathfinder.FindPathTo(position);
-        //GoPath(points);
     }
 
     private IEnumerator GoPath(List<Transform> points)

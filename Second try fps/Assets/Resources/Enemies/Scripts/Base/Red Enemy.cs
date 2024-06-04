@@ -8,7 +8,6 @@ public class RedEnemy : Enemy, IShootable
 {
     [SerializeField] private EnemyData _enemyData;
     [SerializeField] private PickUpArea _pickUpArea;
-    [SerializeField] private Axe axe;
 
     public Image stateImage;
 
@@ -86,16 +85,7 @@ public class RedEnemy : Enemy, IShootable
             lastAttackTime = Time.time;
         }
     }
-    //anim event
-    public void StartAttack()
-    {
-        axe.EnableDamage();
-    }
-    //anim event
-    public void FinishAttack()
-    {
-        axe.DisableDamage();
-    }
+
 
     public void TakeBullet(float damage)
     {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class ShootState : IState
@@ -30,8 +31,7 @@ public class ShootState : IState
         stateImage.color = Color.red;
         lastPlayerPosition = player.position;
 
-        var rb = blue.GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezePosition;
+        blue.GetAgentComp().isStopped = true;
     }
 
     public void Tick()
@@ -39,6 +39,10 @@ public class ShootState : IState
         if(PlayerInSight())
         {
             blue.Shoot();
+        }
+        else
+        {
+            MoveAside();
         }
         LookAtPlayer();
     }
@@ -61,6 +65,11 @@ public class ShootState : IState
         }
         return false;
     }
+    private void MoveAside()
+    {
+        NavMesh.SamplePosition(blue.transform.position, out NavMeshHit hit, 2f, blue.GetAgentComp().areaMask);
+        blue.GoTo(hit.position);
+    }
     private void LookAtPlayer()
     {
         Vector3 lookDirection = (lastPlayerPosition - blue.transform.position).normalized;
@@ -74,7 +83,6 @@ public class ShootState : IState
 
     public void OnExit()
     {
-        var rb = blue.GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.None;
+        blue.GetAgentComp().isStopped = false;
     }
 }
