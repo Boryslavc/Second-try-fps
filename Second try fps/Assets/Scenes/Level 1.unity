@@ -3135,6 +3135,21 @@ PrefabInstance:
       propertyPath: maxRotationStep
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 888799341792871826, guid: b4d8632c071516645a09d19dce51787f,
+        type: 3}
+      propertyPath: _bobRotationMultiplier.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 888799341792871826, guid: b4d8632c071516645a09d19dce51787f,
+        type: 3}
+      propertyPath: _bobRotationMultiplier.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 888799341792871826, guid: b4d8632c071516645a09d19dce51787f,
+        type: 3}
+      propertyPath: _bobRotationMultiplier.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5331342542888068314, guid: b4d8632c071516645a09d19dce51787f,
         type: 3}
       propertyPath: m_Name
