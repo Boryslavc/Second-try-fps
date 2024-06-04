@@ -20,6 +20,10 @@ public class Rifle : Gun
     [SerializeField] private Vector3 _recoilAmount = new Vector3(-2f, .1f, .1f);
     [SerializeField] private float _recoilReturnSpeed = 2f;
 
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem _muzzleFlashEffectPrefab;
+    [SerializeField] private ParticleSystem _muzzleSmokeEffectPrefab;
+
 
 
     private bool isOnEnemy;
@@ -146,6 +150,7 @@ public class Rifle : Gun
             _soundSO.PlayShotSound(transform.position);
 
             var spread = _weaponInfo.GetSpread(Time.time - initialClickTime);
+
             if (isOnEnemy)
             {
                 spread.x += UnityEngine.Random.Range(-extraSpread.x, extraSpread.x);
@@ -156,7 +161,7 @@ public class Rifle : Gun
                 PlayerAnimationHandler.OnShootRecoil?.Invoke(_weaponInfo.RecoilSpeed, _weaponInfo.RecoilAmount, _weaponInfo.RecoilRecoverySpeed);
             }
 
-            Vector3 direction = _bulletSpawnPoint.forward;
+            Vector3 direction = rayCastOrigin.forward;
 
             RaycastHit hit;
             
@@ -194,6 +199,9 @@ public class Rifle : Gun
         var rotation = _bulletSpawnPoint.rotation;
 
         _effectsManager.PlayShotEffect(position, rotation);
+
+        _muzzleFlashEffectPrefab.Play();
+        _muzzleSmokeEffectPrefab.Play();
     }
 
     private TrailRenderer SetUpTrail()
