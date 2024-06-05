@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +6,7 @@ public class EnemyAnimator : MonoBehaviour
     
     [SerializeField] private Animator _animator;
     private NavMeshAgent _navMeshAgent;
+    private int attackTrHash = Animator.StringToHash("AttackTr");
 
     void Awake()
     {
@@ -24,5 +23,10 @@ public class EnemyAnimator : MonoBehaviour
         {
             _animator.SetBool("IsRunning", false);
         }
+    }
+
+    public void SetAttack()
+    {
+        _animator.SetTrigger(attackTrHash);
     }
 }

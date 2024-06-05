@@ -44,7 +44,7 @@ public class RedCombat : IState
     private bool InAttackRange()
     {
         // yes, even if player is above the enemy. Prevents player from jumping down.
-        return red.transform.position.HorizontalSquaredDistanceTo(player.transform.position)
+        return Vector3.SqrMagnitude(red.transform.position - player.transform.position)
             < attackDistanceSquared;
     }
 

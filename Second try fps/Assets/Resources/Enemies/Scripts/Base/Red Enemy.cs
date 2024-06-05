@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -8,14 +7,14 @@ public class RedEnemy : Enemy, IShootable
 {
     [SerializeField] private EnemyData _enemyData;
     [SerializeField] private PickUpArea _pickUpArea;
+    [SerializeField] private Arm _armCollider;
 
     public Image stateImage;
 
     private NavMeshAgent agent;
     private EnemyHealth health;
     private Detector detector;
-    private int attackTriggerInt = Animator.StringToHash("AttackTr");
-    private Animator animator;
+    private EnemyAnimator animator;
 
     private StateMachine stateMachine;
 
@@ -33,7 +32,7 @@ public class RedEnemy : Enemy, IShootable
         agent = GetComponent<NavMeshAgent>();
         detector = GetComponent<Detector>();
         health = GetComponent<EnemyHealth>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<EnemyAnimator>();
         
 
         agent.speed = _enemyData.Speed;
@@ -48,8 +47,6 @@ public class RedEnemy : Enemy, IShootable
         var combat = new RedCombat(this,  _enemyData.AttackDistance, stateImage);
         var chase = new ChasePlayer(agent, stateImage);
 
-        stateMachine.AddAnyTransition(idle, () =>
-                !detector.IsPlayerInRoom && !detector.HasPlayerRanAway);
         stateMachine.AddAnyTransition(combat, () => detector.IsPlayerInRoom);
         stateMachine.AddTransition(combat, chase, () => detector.HasPlayerRanAway);
         stateMachine.AddTransition(chase, combat, chase.CaughtUpWithPlayer);
@@ -79,9 +76,9 @@ public class RedEnemy : Enemy, IShootable
 
     public void Attack()
     {
-        if (Time.time > lastAttackTime + _enemyData.AttackSpeed)
+        if (lastAttackTime + _enemyData.AttackSpeed < Time.time)
         {
-            animator.SetTrigger(attackTriggerInt);
+            animator.SetAttack();
             lastAttackTime = Time.time;
         }
     }
