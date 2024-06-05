@@ -68,7 +68,7 @@ public class Rifle : Gun
             else
             {
                 //                     rifle -> camera -> player
-                _ignoredLayers |= 1 << transform.parent.transform.parent.gameObject.layer;
+                _ignoredLayers |= 1 << GameObject.FindWithTag("Player").layer;
             }
         }
     }

@@ -6,12 +6,9 @@ public class Arm : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(isDamagable)
+        if(other.TryGetComponent<Health>(out Health health))
         {
-            if(other.TryGetComponent<Health>(out Health health))
-            {
                 health.TakeDamage(35);
-            }
         }
     }
 }
